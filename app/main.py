@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 
 from flask import Flask, jsonify, render_template, request
 
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.1.0"
 CATEGORIES = {"wallet", "phone", "keys", "documents", "other"}
 
 app = Flask(__name__)
@@ -26,6 +26,9 @@ def validate_item(data):
     notes = str(data.get("notes", ""))
     if len(notes) > 300:
         errors.append("notes must be 300 characters or less")
+    phone = str(data.get("contact_phone", "")).strip()
+    if phone and not (len(phone) == 10 and phone.isdigit() and phone.startswith("05")):
+        errors.append("contact_phone must be 10 digits starting with 05")
     return errors
 
 
@@ -35,6 +38,7 @@ def create_item(data):
         "found_at": data["found_at"].strip(),
         "category": data["category"],
         "notes": data.get("notes", "").strip(),
+        "contact_phone": data.get("contact_phone", "").strip(),
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
     _items.append(item)

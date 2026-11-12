@@ -38,3 +38,8 @@ def test_create_and_list_item(client):
 def test_invalid_item_returns_400(client):
     r = client.post("/api/items", json={"found_at": ""})
     assert r.status_code == 400
+
+
+def test_wrong_phone_format_is_rejected():
+    data = {"found_at": "محطة الحافلات", "category": "keys", "contact_phone": "0412345678"}
+    assert validate_item(data)
