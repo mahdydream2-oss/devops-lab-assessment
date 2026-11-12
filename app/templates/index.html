@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><title>خدمة المفقودات</title>
+<style>body{font-family:Tahoma,sans-serif;background:#F4EFE6;color:#13203A;margin:40px}
+.v{background:#1E7D65;color:#fff;padding:2px 10px;border-radius:12px;font-size:13px}
+li{background:#fff;margin:6px 0;padding:10px;border-radius:6px;list-style:none}</style></head>
+<body>
+<h1>خدمة المفقودات <span class="v">v{{ version }}</span></h1>
+<p>المسجّل حاليًا: {{ items|length }}</p>
+<ul>{% for i in items %}<li>#{{ i.id }} · {{ i.category }} · {{ i.found_at }}</li>{% endfor %}</ul>
+</body></html>
