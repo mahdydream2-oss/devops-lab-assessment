@@ -1,6 +1,7 @@
 {
-  "name": "DevOps Lab Assessment",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "postCreateCommand": "pip install -r requirements.txt",
-  "forwardPorts": [8000]
+  "editor.inlayHints.enabled": "off",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python"
 }
