@@ -56,6 +56,11 @@ bash scripts/setup-agent.sh https://dev.azure.com/ORG PAT
 
 ✅ النتيجة: `Listening for Jobs`
 
+> ⚠️ إن ظهر `Agent is running` ثم خطأ اتصال، فهناك وكيل قديم من معمل سابق في نفس الـ Codespace. احذفه ثم أعد الأمر:
+> ```bash
+> rm -rf ~/azagent
+> ```
+
 > ⚠️ اترك هذا الـ Terminal مفتوحًا طوال المعمل. إغلاقه يوقف الوكيل. للأوامر الأخرى افتح Terminal جديدًا بعلامة **+**.
 
 **تحقق في Azure:** **Project settings** ثم **Agent pools** ثم **Default** ثم **Agents**. يجب أن يظهر وكيلك وحالته **Online**.
@@ -69,7 +74,8 @@ bash scripts/setup-agent.sh https://dev.azure.com/ORG PAT
 3. **Existing Azure Pipelines YAML file**.
 4. **Branch:** `main`، و**Path:** `/azure-pipelines.yml`، ثم **Continue**.
 5. اضغط **Run**.
-6. أول تشغيل يتوقف ويطلب إذنًا: اضغط **View** ثم **Permit** ثم **Permit**.
+6. إن توقف أول تشغيل وظهرت رسالة **needs permission**: اضغط **View** ثم **Permit** ثم **Permit**. إن لم تظهر فتابع.
+7. إن بقي التشغيل على **Queued** أكثر من دقيقة: تأكد أن Terminal الوكيل ما زال مفتوحًا ويعرض `Listening for Jobs`.
 
 ✅ النتيجة: التشغيل **أخضر**، وتبويب **Tests** فيه 7 اختبارات ناجحة.
 
